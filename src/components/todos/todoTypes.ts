@@ -1,3 +1,5 @@
-interface ITodoItemProps = {
-  todo: ITodoType;
-}
+export type TodoType = {
+  id: number;
+  title: string;
+  completed: boolean;
+};
