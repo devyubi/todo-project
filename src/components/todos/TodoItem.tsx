@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TodoType } from '../todos/todoTypes';
+import { TodoType } from '../../context/todo/todoTypes';
 
 type TodoItemProps = {
   todo: TodoType;

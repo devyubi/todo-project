@@ -26,28 +26,34 @@
 ```text
   /src
   ├── /components // 공통으로 재사용할 컴포넌트
-  │   └── /todos // Todo 관련 컴포넌트
-  │   ├── TodoWrite.tsx
-  │   ├── TodoList.tsx
-  │   ├── TodoItem.tsx
-  │   └── todoTypes.ts
-  │ ├── Header.tsx
-  │ └── Footer.tsx
+  │  └── /todos // Todo 관련 컴포넌트
+  │    ├── TodoWrite.tsx
+  │    ├── TodoList.tsx
+  │    └── TodoItem.tsx
+  │    └── todoTypes.ts
+  │  ├── Header.tsx
+  │  └── Footer.tsx
   │
   ├── /sections // 각 페이지별 섹션 컴포넌트
   │  └── /todo  // Todo 섹션
-  │   ├── TodoReadSection.tsx
-  │   ├── TodoWriteSection.tsx
-  │   ├── TodoEditSection.tsx
-  │   └── TodoDetailSection.tsx
+  │    ├── TodoReadSection.tsx
+  │    ├── TodoWriteSection.tsx
+  │    ├── TodoEditSection.tsx
+  │    └── TodoDetailSection.tsx
   │
   ├── /pages // 페이지 단위 컴포넌트
-  │ ├── MainPage.tsx
-  │ └── TodoPage.tsx
-  │
+  │  ├── NotFound.tsx   // 404
+  │  ├── Settings.tsx   // header에 갖다 붙일 세팅s
+  │  └── TodoPage.tsx
   │
   ├── /contexts // Context 관리 (테마, 로그인 등)
-  │ └── ThemeContext.tsx
+  │  └── /todo  // Todo 섹션
+  │    ├── actions.ts 
+  │    ├── hooks.ts
+  │    ├── reducer.ts
+  │    ├── TodoContext.tsx 
+  │    └── todoTypes.ts
+  │  └── ThemeContext.tsx
   │
   ├── App.css
   ├── App.tsx
@@ -57,17 +63,13 @@
 
 # 4. 주요 기능
 
-1. **Footer**
-
-   - GitHub, 이메일, SNS 링크
+1. **Header**
+   - 테마
 
 2. **메인 페이지**
-
-   - 소개 섹션
-   - 프로젝트 요약
+   - Todo 화면 출력
 
 3. **Todo 페이지**
-
    - TodoWrite: 글 작성
    - TodoList: 작성한 목록 표시
    - TodoItem: 아이템 단위 관리 (완료/수정/삭제)

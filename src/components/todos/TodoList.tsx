@@ -1,5 +1,5 @@
 import TodoItem from './TodoItem';
-import { TodoType } from './todoTypes';
+import { TodoType } from '../../context/todo/todoTypes';
 
 type TodoListProps = {
   todos: TodoType[];

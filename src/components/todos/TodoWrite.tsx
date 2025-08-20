@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { TodoType } from './todoTypes';
+import { TodoType } from '../../context/todo/todoTypes';
 
 type TodoWriteProps = {
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
   handleTodoUpdate: (newTodo: TodoType) => void;
 };
 
-const TodoWrite = ({ setTodos, handleTodoUpdate }: TodoWriteProps) => {
+const TodoWrite = ({ handleTodoUpdate }: TodoWriteProps) => {
   const [title, setTitle] = useState<string>('');
 
   // 할 일 등록

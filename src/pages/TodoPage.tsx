@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TodoList from '../components/todos/TodoList';
 import TodoWrite from '../components/todos/TodoWrite';
-import { TodoType } from '../components/todos/todoTypes';
+import { TodoType } from '../context/todo/todoTypes';
 
 const TodoPage = () => {
   // ts 자리
@@ -15,7 +15,7 @@ const TodoPage = () => {
     setTodos(arr);
   };
   const onDelete = (id: number): void => {
-    const arr = todos.filter(todo => todo.id === id);
+    const arr = todos.filter(todo => todo.id !== id);
     setTodos(arr);
   };
   const onEdit = (id: number, title: string): void => {
