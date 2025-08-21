@@ -4,36 +4,32 @@ import TodoWrite from '../components/todos/TodoWrite';
 import { TodoType } from '../context/todo/todoTypes';
 
 const TodoPage = () => {
-  // ts 자리
   const [todos, setTodos] = useState<TodoType[]>([]);
 
-  // CRUD
   const onToggle = (id: number): void => {
-    const arr = todos.map(todo =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+    setTodos(prev =>
+      prev.map(todo => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)),
     );
-    setTodos(arr);
   };
+
   const onDelete = (id: number): void => {
-    const arr = todos.filter(todo => todo.id !== id);
-    setTodos(arr);
+    setTodos(prev => prev.filter(todo => todo.id !== id));
   };
+
   const onEdit = (id: number, title: string): void => {
-    const arr = todos.map(item => (item.id === id ? { ...item, title } : item));
-    setTodos(arr);
+    setTodos(prev => prev.map(item => (item.id === id ? { ...item, title } : item)));
   };
 
-  // todos 를 업데이트 하는 함수
   const handleTodoUpdate = (newTodo: TodoType): void => {
-    const arr: TodoType[] = [newTodo, ...todos];
-    setTodos(arr);
+    setTodos(prev => [newTodo, ...prev]);
   };
 
-  // tsx 자리
   return (
-    <div>
-      <h1>할 일 앱 서비스</h1>
-      <div>
+    <div className="min-h-screen flex justify-center items-start bg-gray-100 dark:bg-gray-900 p-6">
+      <div className="w-full max-w-lg bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+        <h1 className="text-2xl font-bold text-center text-indigo-600 dark:text-indigo-400 mb-4">
+          할 일 앱 서비스
+        </h1>
         <TodoWrite setTodos={setTodos} handleTodoUpdate={handleTodoUpdate} />
         <TodoList todos={todos} onToggle={onToggle} onDelete={onDelete} onEdit={onEdit} />
       </div>
