@@ -1,6 +1,6 @@
 // import { NavLink } from 'react-router-dom';
 
-// function TodoDetailSection() {
+// function TodoDetailSection(){
 //   return (
 //     <section>
 //       <div>
