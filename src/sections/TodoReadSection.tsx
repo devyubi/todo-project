@@ -30,46 +30,51 @@ const TodoReadSection: React.FC<Props> = ({ todos, onToggle, onDelete, onUpdate 
   };
 
   return (
-    <div className="mb-4 space-y-3">
+    <div className="space-y-4">
       {todos.map(todo => (
         <div
           key={todo.id}
-          className="flex items-center justify-between p-5 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md"
+          className="flex items-center justify-between p-6 rounded-xl bg-[#fffaf5] dark:bg-[#2d2724] shadow-md"
         >
           <div className="flex items-center gap-4 flex-1">
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => onToggle(todo.id)}
-              className="w-7 h-7"
+              className="w-6 h-6 accent-[#7AA374]"
             />
             {editId === todo.id ? (
               <input
                 type="text"
                 value={editTitle}
                 onChange={e => setEditTitle(e.target.value)}
-                className="flex-1 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg"
+                className="flex-1 px-4 py-2 rounded-md border border-[#E0D7CC] dark:border-[#5A4B41] bg-[#F5EFE7] dark:bg-[#3C3735] text-[#5A4B41] dark:text-[#EDE4DC] focus:outline-none focus:ring-2 focus:ring-[#7AA374] text-lg"
               />
             ) : (
               <span
-                className={`text-lg ${todo.completed ? 'line-through text-gray-400 dark:text-gray-500' : ''}`}
+                className={`text-lg ${
+                  todo.completed
+                    ? 'line-through text-gray-400 dark:text-gray-500'
+                    : 'text-[#5A4B41] dark:text-[#EDE4DC]'
+                }`}
               >
                 {todo.title}
               </span>
             )}
           </div>
-          <div className="flex gap-3">
+
+          <div className="flex gap-2">
             {editId === todo.id ? (
               <>
                 <button
                   onClick={() => finishEdit(todo.id)}
-                  className="px-4 py-2 text-sm rounded-md bg-green-500 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-500"
+                  className="px-4 py-2 rounded-md bg-[#7AA374] text-white hover:bg-[#5E8760] transition-colors"
                 >
                   저장
                 </button>
                 <button
                   onClick={cancelEdit}
-                  className="px-4 py-2 text-sm rounded-md bg-gray-300 dark:bg-gray-700 dark:text-gray-100 hover:bg-gray-400 dark:hover:bg-gray-600"
+                  className="px-4 py-2 rounded-md bg-[#B3A08B] text-white hover:bg-[#8C7561] transition-colors"
                 >
                   취소
                 </button>
@@ -78,13 +83,13 @@ const TodoReadSection: React.FC<Props> = ({ todos, onToggle, onDelete, onUpdate 
               <>
                 <button
                   onClick={() => startEdit(todo)}
-                  className="px-4 py-2 text-sm rounded-md bg-yellow-400 text-white hover:bg-yellow-500 dark:bg-yellow-500 dark:hover:bg-yellow-400"
+                  className="px-4 py-2 rounded-md bg-[#ffba76] text-white hover:bg-[#B8865B] transition-colors"
                 >
                   수정
                 </button>
                 <button
                   onClick={() => onDelete(todo.id)}
-                  className="px-4 py-2 text-sm rounded-md bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-500"
+                  className="px-4 py-2 rounded-md bg-[#be3e30] text-white hover:bg-[#8B1A1A] transition-colors"
                 >
                   삭제
                 </button>
@@ -96,4 +101,5 @@ const TodoReadSection: React.FC<Props> = ({ todos, onToggle, onDelete, onUpdate 
     </div>
   );
 };
+
 export default TodoReadSection;

@@ -30,9 +30,11 @@
   │    ├── TodoItem.tsx
   │    ├── TodoList.tsx
   │    └── TodoWrite.tsx
+  │  ├── ConfirmModal.tsx   // 전체 삭제 컴포넌트
+  │  ├── StatsPie.tsx   // 파이차트 컴포넌트
   │  ├── Footer.tsx
   │  └── Header.tsx
-  │ 
+  │
   ├── /contexts // Context 관리 (테마, 로그인 등)
   │  └── /todo  // Todo 섹션
   │    ├── actions.ts
@@ -53,7 +55,11 @@
   │    ├── TodoReadSection.tsx
   │    ├── TodoWriteSection.tsx
   │    ├── TodoEditSection.tsx
-  │    └── TodoDetailSection.tsx
+  │    └── TodoDetailSection.
+  │
+  ├── /utils  // npm 함수들
+  │  ├── state.ts  // nivo-pie 차트 계산 함수들
+  │  └── date.ts   // dayjs 날짜
   │
   ├── App.css
   ├── App.tsx
@@ -77,3 +83,36 @@
 
 4. **Footer**
    - GitHub, 이메일, SNS 링크
+
+---
+
+# 사용 라이브러리
+
+- Frame Motion
+- Dayjs
+- Nivo Chart (Pie 차트 사용)
+
+# 추가 기능 구현
+
+1. 완료율 통계 오늘/이번주/이번달 완료율 (%) 보여주기
+
+- 例: 이번주 할 일 10개 중 7개 완료 → 70%
+
+2. 카테고리/태그 기능 `공부 📚`, `운동 🏃`, `일 💼` 등
+
+3. 마감일(D-day) 알림
+
+- 할 일에 마감일 추가 D-3, D-1 같은 표시
+- 마감 지난 할 일은 빨간색 표시
+
+4. 즐겨찾기(중요 표시) ⭐ (즐겨찾기 버튼) 눌러서 중요 Todo를 맨 위에 띄우기
+
+5. 간단한 애니메이션
+
+- 완료 체크 시 "체크 효과"
+- 삭제 시 슬라이드 아웃 효과 (과하지 않게)
+
+6. 검색/필터 기능
+
+- 제목이나 태그로 검색
+- "완료된 것만 보기" / "미완료만 보기"

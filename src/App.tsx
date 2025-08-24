@@ -13,10 +13,10 @@ const App: React.FC = () => {
     <ThemeProvider>
       <TodoProvider>
         <Router>
-          <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+          <div className="min-h-screen flex flex-col bg-[#fdf9f5] dark:bg-[#211d1c] text-[#5A4B41] dark:text-[#EDE4DC] transition-colors duration-300">
             <Header />
 
-            <main className="flex-1 container-app px-4 py-6">
+            <main className="flex-1 mx-auto w-full max-w-4xl px-4 py-4 sm:px-6 lg:px-8">
               <Routes>
                 <Route path="/" element={<div>HOME</div>} />
                 <Route path="/todos/*" element={<TodoPage />} />

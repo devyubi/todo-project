@@ -23,18 +23,18 @@ const TodoEditSection: React.FC<Props> = ({ todo, onUpdate, onCancel }) => {
         type="text"
         value={title}
         onChange={e => setTitle(e.target.value)}
-        className="flex-1 px-3 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="flex-1 px-3 py-2 rounded-md border border-[#E0D7CC] dark:border-[#5A4B41] bg-[#F5EFE7] dark:bg-[#3C3735] text-[#5A4B41] dark:text-[#EDE4DC] focus:outline-none focus:ring-2 focus:ring-[#7AA374] transition-colors"
       />
       <button
         type="submit"
-        className="px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-500"
+        className="ml-2 px-4 py-2 rounded-md bg-[#7AA374] text-white hover:bg-[#5E8760] dark:bg-[#5E8760] dark:hover:bg-[#7AA374] transition-colors"
       >
         저장
       </button>
       <button
         type="button"
         onClick={onCancel}
-        className="px-4 py-2 rounded-md bg-gray-300 text-gray-900 hover:bg-gray-400 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
+        className="px-4 py-2 rounded-md bg-[#B3A08B] text-white hover:bg-[#8C7561] dark:bg-[#5A4B41] dark:hover:bg-[#7AA374] transition-colors"
       >
         취소
       </button>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TodoType } from './TodoItem';
+import { useState } from 'react';
+import { TodoType } from '../../context/todo/todoTypes';
 
 interface TodoWriteProps {
   onAdd: (todo: TodoType) => void;
@@ -7,34 +7,41 @@ interface TodoWriteProps {
 
 const TodoWrite: React.FC<TodoWriteProps> = ({ onAdd }) => {
   const [title, setTitle] = useState('');
+  const [dueDate, setDueDate] = useState('');
 
   const handleAdd = () => {
     if (!title.trim()) return;
 
-    const newTodo: TodoType = { id: Date.now(), title: title.trim(), completed: false };
+    const newTodo: TodoType = {
+      id: Date.now(),
+      title,
+      completed: false,
+      category: '기본',
+      dueDate: dueDate || undefined,
+      isFavorite: false,
+    };
 
     onAdd(newTodo);
     setTitle('');
-  };
-
-  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') handleAdd();
+    setDueDate('');
   };
 
   return (
-    <div className="flex mt-4">
+    <div className="flex gap-2 items-center">
       <input
         type="text"
+        placeholder="할 일을 입력하세요"
         value={title}
         onChange={e => setTitle(e.target.value)}
-        onKeyDown={handleEnter}
-        placeholder="새로운 할 일을 입력하세요"
-        className="flex-1 p-2 rounded-l-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="border rounded px-2 py-1 flex-1"
       />
-      <button
-        onClick={handleAdd}
-        className="p-2 bg-yellow-400 hover:bg-yellow-500 dark:bg-yellow-500 dark:hover:bg-yellow-600 text-white rounded-r-md font-semibold"
-      >
+      <input
+        type="date"
+        value={dueDate}
+        onChange={e => setDueDate(e.target.value)}
+        className="border rounded px-2 py-1"
+      />
+      <button onClick={handleAdd} className="bg-orange-400 text-white px-4 py-1 rounded">
         추가
       </button>
     </div>

@@ -15,45 +15,42 @@ const TodoPage: React.FC = () => {
 
   const { todos, handleAdd, handleDelete, handleToggle, handleUpdate } = todoCtx;
 
-  // 편집 시작
   const startEdit = (todo: TodoType) => setEditTodo(todo);
-  // 편집 완료
   const finishEdit = (updatedTodo: TodoType) => {
     handleUpdate(updatedTodo);
     setEditTodo(null);
   };
-  // 편집 취소
   const cancelEdit = () => setEditTodo(null);
 
-  // 상세보기 시작
   const showDetail = (todo: TodoType) => setDetailTodo(todo);
   const closeDetail = () => setDetailTodo(null);
 
   return (
-    <div className="max-w-md mx-10 mt-10 p-5 rounded-md bg-gray-50 dark:bg-gray-900 shadow-md">
-      <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100 mb-6">
-        나의 Todo 리스트
-      </h1>
+    <main className="flex justify-center rounded-3xl py-10 px-4 sm:px-6 lg:px-8 bg-[#EDE4DC] dark:bg-[#2E2A28] min-h-[calc(100vh-80px)]">
+      <div className="w-full max-w-5xl p-8 rounded-3xl bg-[#F5EFE7] dark:bg-[#3C3735] shadow-lg min-h-[600px] flex flex-col">
+        <h1 className="text-3xl font-bold text-center text-[#5A4B41] dark:text-[#EDE4DC] mb-8">
+          나의 Todo 리스트
+        </h1>
 
-      {/* 쓰기 */}
-      {!editTodo && !detailTodo && <TodoWriteSection onAdd={handleAdd} />}
-
-      {/* 읽기 */}
-      {!editTodo && !detailTodo && (
-        <TodoReadSection
-          todos={todos}
-          onToggle={handleToggle}
-          onDelete={handleDelete}
-          onUpdate={handleUpdate}
-        />
-      )}
-
-      {/* 수정 */}
-      {editTodo && <TodoEditSection todo={editTodo} onUpdate={finishEdit} onCancel={cancelEdit} />}
-
-      {/* 상세보기 */}
-      {detailTodo && <TodoDetailSection todo={detailTodo} onClose={closeDetail} />}
-    </div>
+        {editTodo ? (
+          <TodoEditSection todo={editTodo} onUpdate={finishEdit} onCancel={cancelEdit} />
+        ) : detailTodo ? (
+          <TodoDetailSection todo={detailTodo} onClose={closeDetail} />
+        ) : (
+          <>
+            <TodoWriteSection onAdd={handleAdd} />
+            <div className="mt-6">
+              <TodoReadSection
+                todos={todos}
+                onToggle={handleToggle}
+                onDelete={handleDelete}
+                onUpdate={handleUpdate}
+              />
+            </div>
+          </>
+        )}
+      </div>
+    </main>
   );
 };
 
