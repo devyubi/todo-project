@@ -1,38 +1,35 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
 import Footer from './components/Footer';
 import TodoPage from './pages/TodoPage';
-import { TodoProvider } from './context/todo/TodoContext';
-import Header from './components/Header';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
-import TodoWriteSection from './sections/TodoWriteSection';
-import TodoDetailSection from './sections/TodoDetailSection';
-import TodoEditSection from './sections/TodoEditSection';
+import { ThemeProvider } from './context/ThemeContext';
+import { TodoProvider } from './context/todo/TodoProvider';
 
-const App = () => {
-  const toggleDark = () => {
-    document.documentElement.classList.toggle('dark');
-  };
-
+const App: React.FC = () => {
   return (
-    <div>
+    <ThemeProvider>
       <TodoProvider>
         <Router>
-          <Header />
-          <Routes>
-            <Route path="/" element={<TodoPage />} />
-            {/* todo 관련 route */}
-            <Route path="/todos/write" element={<TodoWriteSection />} />
-            <Route path="/todos/:id" element={<TodoDetailSection />} />
-            <Route path="/todos/:id/edit" element={<TodoEditSection />} />
-            {/* todos 관련 route */}
-            <Route path="/settings" element={<Settings />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Footer />
+          <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            <Header />
+
+            <main className="flex-1 container-app px-4 py-6">
+              <Routes>
+                <Route path="/" element={<div>HOME</div>} />
+                <Route path="/todos/*" element={<TodoPage />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+
+            <Footer />
+          </div>
         </Router>
       </TodoProvider>
-    </div>
+    </ThemeProvider>
   );
 };
 

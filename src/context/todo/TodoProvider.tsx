@@ -1,35 +1,17 @@
-import { createContext, useCallback, useMemo, useReducer } from 'react';
-import { initialState, TodoState, TodoType } from './todoTypes';
-import { todosReducer } from './reducer';
-import { AC } from './actions';
+import React, { ReactNode } from 'react';
+import { TodoContext } from './TodoContext';
+import { useTodos } from './useTodos';
 
-export const TodoStateContext = createContext<TodoState | null>(null);
+interface TodoProviderProps {
+  children: ReactNode;
+}
 
-type TodoActions = {
-  addTodo: (todo: TodoType) => void;
-  toggleTodo: (id: number) => void;
-  deleteTodo: (id: number) => void;
-  editTodo: (id: number, title: string) => void;
-};
-export const TodoActionContext = createContext<TodoActions | null>(null);
-
-export const TodoProvider = ({ children }: React.PropsWithChildren): JSX.Element => {
-  const [state, dispatch] = useReducer(todosReducer, initialState);
-
-  // dispatch 전용 함수
-  const addTodo = useCallback((todo: TodoType) => dispatch(AC.addTodo(todo)), []);
-  const toggleTodo = useCallback((id: number) => dispatch(AC.toggleTodo(id)), []);
-  const deleteTodo = useCallback((id: number) => dispatch(AC.deleteTodo(id)), []);
-  const editTodo = useCallback((id: number, title: string) => dispatch(AC.editTodo(id, title)), []);
-
-  const stateValue = useMemo(() => state, [state]);
-  const actionValue = useMemo(() => {
-    return { addTodo, toggleTodo, deleteTodo, editTodo };
-  }, [addTodo, toggleTodo, deleteTodo, editTodo]);
+export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
+  const { todos, handleAdd, handleDelete, handleToggle, handleUpdate } = useTodos();
 
   return (
-    <TodoStateContext.Provider value={stateValue}>
-      <TodoActionContext.Provider value={actionValue}>{children}</TodoActionContext.Provider>
-    </TodoStateContext.Provider>
+    <TodoContext.Provider value={{ todos, handleAdd, handleDelete, handleToggle, handleUpdate }}>
+      {children}
+    </TodoContext.Provider>
   );
 };

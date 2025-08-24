@@ -1,10 +1,10 @@
-const Footer = () => {
+import React from 'react';
+
+const Footer: React.FC = () => {
   return (
-    <div>
-      <div className="container-app py-8 text-sm text-neutral-400 dark:text-neutral-400">
-        할일 앱 서비스 개발 @ 문유비
-      </div>
-    </div>
+    <footer className="mt-10 p-6 text-center text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-900">
+      할일 앱 서비스 개발 @ 문유비
+    </footer>
   );
 };
 

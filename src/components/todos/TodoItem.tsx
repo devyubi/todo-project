@@ -1,50 +1,50 @@
-import { Link } from 'react-router-dom';
-import { useTodoActions } from '../../context/todo/hooks';
-import { TodoType } from '../../context/todo/todoTypes';
+import React from 'react';
 
-type TodoItemProps = { todo: TodoType };
+export interface TodoType {
+  id: number;
+  title: string;
+  completed: boolean;
+}
 
-const TodoItem = ({ todo }: TodoItemProps) => {
-  // js 자리
-  const { toggleTodo, deleteTodo } = useTodoActions();
+interface TodoItemProps {
+  todo: TodoType;
+  onToggle: (id: number) => void;
+  onDelete: (id: number) => void;
+}
 
+const TodoItem: React.FC<TodoItemProps> = ({ todo, onToggle, onDelete }) => {
   return (
     <li
-      className={['flex items-center justify-between gap-2 rounded-lg border px-3 py-2'].join(' ')}
+      className={`
+        flex justify-between items-center p-3 mb-2 rounded-md
+        bg-white dark:bg-gray-800
+        border border-gray-200 dark:border-gray-700
+        hover:bg-gray-50 dark:hover:bg-gray-700
+      `}
     >
-      <div className="flex w-full items-center gap-3">
+      <div className="flex items-center">
         <input
           type="checkbox"
-          onChange={() => toggleTodo(todo.id)}
           checked={todo.completed}
-          className="accent-brand h-4 w-4"
+          onChange={() => onToggle(todo.id)}
+          className="mr-3 w-5 h-5 text-blue-500 rounded focus:ring-blue-400"
         />
-        <Link
-          to={`/todos/${todo.id}`}
-          className={[
-            'flex-1',
+        <span
+          className={`${
             todo.completed
-              ? 'text-neutral-400 line-through'
-              : 'text-neutral-900 dark:text-neutral-100',
-          ].join(' ')}
+              ? 'line-through text-gray-400 dark:text-gray-500'
+              : 'text-gray-900 dark:text-gray-100'
+          }`}
         >
           {todo.title}
-        </Link>
-        <div className="flex items-center gap-2">
-          <Link
-            to={`/todos/${todo.id}/edit`}
-            className="dark: rounded-md border border-neutral-300 px-3 py-1 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-800"
-          >
-            수정
-          </Link>
-          <button
-            onClick={() => deleteTodo(todo.id)}
-            className="rounded-md border border-red-300 px-3 py-1 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
-          >
-            삭제
-          </button>
-        </div>
+        </span>
       </div>
+      <button
+        onClick={() => onDelete(todo.id)}
+        className="text-red-500 hover:text-red-700 dark:hover:text-red-400 font-semibold"
+      >
+        삭제
+      </button>
     </li>
   );
 };

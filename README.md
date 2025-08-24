@@ -36,7 +36,7 @@
   ├── /contexts // Context 관리 (테마, 로그인 등)
   │  └── /todo  // Todo 섹션
   │    ├── actions.ts
-  │    ├── hooks.ts
+  │    ├── useTodos.ts
   │    ├── reducer.ts
   │    ├── TodoContext.tsx
   │    ├── TodoProvider.tsx

@@ -1,29 +1,24 @@
-import { todoAction, TodoState, TodoType } from './todoTypes';
+import { TodoType } from './todoTypes';
 
-export function todosReducer(state: TodoState, action: todoAction): TodoState {
+export type TodoAction =
+  | { type: 'ADD'; payload: TodoType }
+  | { type: 'DELETE'; payload: number }
+  | { type: 'TOGGLE'; payload: number }
+  | { type: 'UPDATE'; payload: TodoType };
+
+export const todoReducer = (state: TodoType[], action: TodoAction): TodoType[] => {
   switch (action.type) {
-    case 'ADD': {
-      const todo = action.payload;
-      return { ...state, todos: [todo, ...state.todos] };
-    }
-    case 'TOGGLE': {
-      const { id } = action.payload;
-      const arr: TodoType[] = state.todos.map(todo =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+    case 'ADD':
+      return [action.payload, ...state];
+    case 'DELETE':
+      return state.filter(todo => todo.id !== action.payload);
+    case 'TOGGLE':
+      return state.map(todo =>
+        todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo,
       );
-      return { ...state, todos: arr };
-    }
-    case 'DELETE': {
-      const { id } = action.payload;
-      const arr: TodoType[] = state.todos.filter(todo => todo.id !== id);
-      return { ...state, todos: arr };
-    }
-    case 'EDIT': {
-      const { id, title } = action.payload;
-      const arr: TodoType[] = state.todos.map(todo => (todo.id === id ? { ...todo, title } : todo));
-      return { ...state, todos: arr };
-    }
+    case 'UPDATE':
+      return state.map(todo => (todo.id === action.payload.id ? action.payload : todo));
     default:
       return state;
   }
-}
+};
