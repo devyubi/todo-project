@@ -1,15 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import TodoItem from './TodoItem';
 import { TodoType } from '../../context/todo/todoTypes';
+import { useTodos } from '../../context/todo/TodoContext';
 
-type TodoListProps = {
-  todos: TodoType[];
-  onToggle: (id: number) => void;
-  onDelete: (id: number) => void;
-  onEdit: (id: number, newTitle: string) => void;
-};
+type TodoListProps = { todos: TodoType[] };
 
-const TodoList: React.FC<TodoListProps> = ({ todos, onToggle, onDelete, onEdit }) => {
+const TodoList = (): JSX.Element => {
+  const { todos } = useTodos();
+
   return (
     <div className="mt-6">
       <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">할 일 목록</h2>
@@ -24,7 +22,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onToggle, onDelete, onEdit }
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.25 }}
               >
-                <TodoItem todo={item} onToggle={onToggle} onDelete={onDelete} onEdit={onEdit} />
+                <TodoItem todo={item} />
               </motion.li>
             ))
           ) : (

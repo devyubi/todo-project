@@ -27,12 +27,26 @@
   /src
   ├── /components // 공통으로 재사용할 컴포넌트
   │  └── /todos // Todo 관련 컴포넌트
-  │    ├── TodoWrite.tsx
+  │    ├── TodoItem.tsx
   │    ├── TodoList.tsx
-  │    └── TodoItem.tsx
+  │    └── TodoWrite.tsx
+  │  ├── Footer.tsx
+  │  └── Header.tsx
+  │ 
+  ├── /contexts // Context 관리 (테마, 로그인 등)
+  │  └── /todo  // Todo 섹션
+  │    ├── actions.ts
+  │    ├── hooks.ts
+  │    ├── reducer.ts
+  │    ├── TodoContext.tsx
+  │    ├── TodoProvider.tsx
   │    └── todoTypes.ts
-  │  ├── Header.tsx
-  │  └── Footer.tsx
+  │  └── ThemeContext.tsx
+  │
+  ├── /pages // 페이지 단위 컴포넌트
+  │  ├── NotFound.tsx   // 404
+  │  ├── Settings.tsx   // header에 갖다 붙일 세팅s
+  │  └── TodoPage.tsx
   │
   ├── /sections // 각 페이지별 섹션 컴포넌트
   │  └── /todo  // Todo 섹션
@@ -40,20 +54,6 @@
   │    ├── TodoWriteSection.tsx
   │    ├── TodoEditSection.tsx
   │    └── TodoDetailSection.tsx
-  │
-  ├── /pages // 페이지 단위 컴포넌트
-  │  ├── NotFound.tsx   // 404
-  │  ├── Settings.tsx   // header에 갖다 붙일 세팅s
-  │  └── TodoPage.tsx
-  │
-  ├── /contexts // Context 관리 (테마, 로그인 등)
-  │  └── /todo  // Todo 섹션
-  │    ├── actions.ts 
-  │    ├── hooks.ts
-  │    ├── reducer.ts
-  │    ├── TodoContext.tsx 
-  │    └── todoTypes.ts
-  │  └── ThemeContext.tsx
   │
   ├── App.css
   ├── App.tsx
