@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TodoType } from './todoTypes';
-import { addTodo, deleteTodo, toggleTodo, updateTodo } from './actions';
+import { addTodo, deleteTodo, toggleTodo, updateTodo, deleteAllTodos } from './actions';
 
 export const useTodos = () => {
   const [todos, setTodos] = useState<TodoType[]>(() => {
@@ -18,5 +18,8 @@ export const useTodos = () => {
   const handleToggle = (id: number) => saveTodos(toggleTodo(todos, id));
   const handleUpdate = (todo: TodoType) => saveTodos(updateTodo(todos, todo));
 
-  return { todos, handleAdd, handleDelete, handleToggle, handleUpdate };
+  // 새로 추가: 전체 삭제
+  const handleDeleteAll = () => saveTodos(deleteAllTodos(todos));
+
+  return { todos, handleAdd, handleDelete, handleToggle, handleUpdate, handleDeleteAll };
 };

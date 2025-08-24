@@ -7,10 +7,13 @@ interface TodoProviderProps {
 }
 
 export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
-  const { todos, handleAdd, handleDelete, handleToggle, handleUpdate } = useTodos();
+  const { todos, handleAdd, handleDelete, handleToggle, handleUpdate, handleDeleteAll } =
+    useTodos();
 
   return (
-    <TodoContext.Provider value={{ todos, handleAdd, handleDelete, handleToggle, handleUpdate }}>
+    <TodoContext.Provider
+      value={{ todos, handleAdd, handleDelete, handleToggle, handleUpdate, handleDeleteAll }}
+    >
       {children}
     </TodoContext.Provider>
   );

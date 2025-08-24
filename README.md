@@ -30,7 +30,7 @@
   │    ├── TodoItem.tsx
   │    ├── TodoList.tsx
   │    └── TodoWrite.tsx
-  │  ├── ConfirmModal.tsx   // 전체 삭제 컴포넌트
+  │  ├── DeleteAll.tsx   // 리스트 전체 삭제 컴포넌트
   │  ├── StatsPie.tsx   // 파이차트 컴포넌트
   │  ├── Footer.tsx
   │  └── Header.tsx

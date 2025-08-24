@@ -5,24 +5,24 @@ import TodoWriteSection from '../sections/TodoWriteSection';
 import TodoReadSection from '../sections/TodoReadSection';
 import TodoEditSection from '../sections/TodoEditSection';
 import TodoDetailSection from '../sections/TodoDetailSection';
+import DeleteAll from '../components/DeleteAll';
 
 const TodoPage: React.FC = () => {
   const todoCtx = useContext(TodoContext);
+  const [isListDeleteAll, setIsListDeleteAll] = useState(false);
 
   const [editTodo, setEditTodo] = useState<TodoType | null>(null);
   const [detailTodo, setDetailTodo] = useState<TodoType | null>(null);
+
   if (!todoCtx) return <div>Loading...</div>;
 
-  const { todos, handleAdd, handleDelete, handleToggle, handleUpdate } = todoCtx;
+  const { todos, handleAdd, handleDelete, handleToggle, handleUpdate, handleDeleteAll } = todoCtx;
 
-  const startEdit = (todo: TodoType) => setEditTodo(todo);
   const finishEdit = (updatedTodo: TodoType) => {
     handleUpdate(updatedTodo);
     setEditTodo(null);
   };
   const cancelEdit = () => setEditTodo(null);
-
-  const showDetail = (todo: TodoType) => setDetailTodo(todo);
   const closeDetail = () => setDetailTodo(null);
 
   return (
@@ -39,7 +39,25 @@ const TodoPage: React.FC = () => {
         ) : (
           <>
             <TodoWriteSection onAdd={handleAdd} />
-            <div className="mt-6">
+            <div>
+              {/* 전체 삭제 버튼 */}
+              {todos.length > 0 && (
+                <div className="flex justify-end mb-4">
+                  <button
+                    onClick={() => setIsListDeleteAll(true)}
+                    className="py-2 px-4 bg-red-500 text-white rounded"
+                  >
+                    전체 삭제
+                  </button>
+                  <DeleteAll
+                    isOpen={isListDeleteAll}
+                    onConfirm={handleDeleteAll}
+                    onCancel={() => setIsListDeleteAll(false)}
+                  />
+                </div>
+              )}
+
+              {/* Todo 리스트 */}
               <TodoReadSection
                 todos={todos}
                 onToggle={handleToggle}

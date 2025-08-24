@@ -1,14 +1,13 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface ConfirmModalProps {
+interface DeleteAllProps {
   isOpen: boolean;
-  title: string;
   onConfirm: () => void;
   onCancel: () => void;
 }
 
-const ConfirmModal: React.FC<ConfirmModalProps> = ({ isOpen, title, onConfirm, onCancel }) => {
+const DeleteAll: React.FC<DeleteAllProps> = ({ isOpen, onConfirm, onCancel }) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -24,7 +23,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({ isOpen, title, onConfirm, o
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -50, opacity: 0 }}
           >
-            <h2 className="text-lg font-semibold mb-4">{title}</h2>
+            <h2 className="text-lg font-semibold mb-4">정말 전체 삭제하시겠습니까?</h2>
             <div className="flex justify-end gap-2">
               <button
                 onClick={onCancel}
@@ -46,4 +45,4 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({ isOpen, title, onConfirm, o
   );
 };
 
-export default ConfirmModal;
+export default DeleteAll;

@@ -34,7 +34,7 @@ const TodoReadSection: React.FC<Props> = ({ todos, onToggle, onDelete, onUpdate 
       {todos.map(todo => (
         <div
           key={todo.id}
-          className="flex items-center justify-between p-6 rounded-xl bg-[#fffaf5] dark:bg-[#2d2724] shadow-md"
+          className="flex items-center gap-4 justify-between p-6 rounded-xl bg-[#fffaf5] dark:bg-[#2d2724] shadow-md"
         >
           <div className="flex items-center gap-4 flex-1">
             <input
@@ -44,15 +44,23 @@ const TodoReadSection: React.FC<Props> = ({ todos, onToggle, onDelete, onUpdate 
               className="w-6 h-6 accent-[#7AA374]"
             />
             {editId === todo.id ? (
-              <input
-                type="text"
+              <textarea
                 value={editTitle}
                 onChange={e => setEditTitle(e.target.value)}
-                className="flex-1 px-4 py-2 rounded-md border border-[#E0D7CC] dark:border-[#5A4B41] bg-[#F5EFE7] dark:bg-[#3C3735] text-[#5A4B41] dark:text-[#EDE4DC] focus:outline-none focus:ring-2 focus:ring-[#7AA374] text-lg"
+                onKeyDown={e => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    finishEdit(todo.id);
+                  }
+                }}
+                className="flex-1 px-4 py-2 rounded-md border border-[#E0D7CC] dark:border-[#5A4B41] 
+                           bg-[#F5EFE7] dark:bg-[#3C3735] text-[#5A4B41] dark:text-[#EDE4DC] 
+                           focus:outline-none focus:ring-2 focus:ring-[#7AA374] text-lg resize-none"
+                rows={2}
               />
             ) : (
               <span
-                className={`text-lg ${
+                className={`text-lg whitespace-pre-line ${
                   todo.completed
                     ? 'line-through text-gray-400 dark:text-gray-500'
                     : 'text-[#5A4B41] dark:text-[#EDE4DC]'
@@ -68,13 +76,13 @@ const TodoReadSection: React.FC<Props> = ({ todos, onToggle, onDelete, onUpdate 
               <>
                 <button
                   onClick={() => finishEdit(todo.id)}
-                  className="px-4 py-2 rounded-md bg-[#7AA374] text-white hover:bg-[#5E8760] transition-colors"
+                  className="px-4 py-2 rounded-md bg-[#445f99] text-white hover:bg-[#394e77] transition-colors"
                 >
                   저장
                 </button>
                 <button
                   onClick={cancelEdit}
-                  className="px-4 py-2 rounded-md bg-[#B3A08B] text-white hover:bg-[#8C7561] transition-colors"
+                  className="px-4 py-2 rounded-md bg-[#9f3737] text-white hover:bg-[#6e1f1f] transition-colors"
                 >
                   취소
                 </button>

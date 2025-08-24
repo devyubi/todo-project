@@ -25,12 +25,12 @@ const Header: React.FC = () => {
             <NavLink to="/" className={({ isActive }) => (isActive ? 'font-semibold' : '')}>
               홈
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to="/todos/read"
               className={({ isActive }) => (isActive ? 'font-semibold' : '')}
             >
               읽기
-            </NavLink>
+            </NavLink> */}
             <NavLink
               to="/todos/write"
               className={({ isActive }) => (isActive ? 'font-semibold' : '')}

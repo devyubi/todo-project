@@ -18,7 +18,7 @@ const TodoEditSection: React.FC<Props> = ({ todo, onUpdate, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
+    <form onSubmit={handleSubmit} className="flex gap-3 mb-4">
       <input
         type="text"
         value={title}
@@ -27,14 +27,14 @@ const TodoEditSection: React.FC<Props> = ({ todo, onUpdate, onCancel }) => {
       />
       <button
         type="submit"
-        className="ml-2 px-4 py-2 rounded-md bg-[#7AA374] text-white hover:bg-[#5E8760] dark:bg-[#5E8760] dark:hover:bg-[#7AA374] transition-colors"
+        className="px-4 py-2 rounded-md bg-[#4F9944] text-white hover:bg-[#3A683B] dark:bg-[#5E8760] dark:hover:bg-[#7AA374] transition-colors"
       >
         저장
       </button>
       <button
         type="button"
         onClick={onCancel}
-        className="px-4 py-2 rounded-md bg-[#B3A08B] text-white hover:bg-[#8C7561] dark:bg-[#5A4B41] dark:hover:bg-[#7AA374] transition-colors"
+        className="px-4 py-2 rounded-md bg-[#B8865B] text-white hover:bg-[#8C7561] dark:bg-[#5A4B41] dark:hover:bg-[#7AA374] transition-colors"
       >
         취소
       </button>
