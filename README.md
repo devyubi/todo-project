@@ -1,5 +1,7 @@
 # yubi's Todo 앱 (개인 프로젝트 TODO)
 
+- vercel : https://todo-project-six-delta.vercel.app/
+
 - 첫 화면
 - GitHub 자유롭게
 - useState (id, title, completed)
