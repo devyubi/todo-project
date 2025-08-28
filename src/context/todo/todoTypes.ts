@@ -8,5 +8,3 @@ export interface TodoType {
   dueDate?: string;
   isFavorite?: boolean;
 }
-
-
