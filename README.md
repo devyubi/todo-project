@@ -2,12 +2,6 @@
 
 - vercel : https://todo-project-six-delta.vercel.app/
 
-- 첫 화면
-- GitHub 자유롭게
-- useState (id, title, completed)
-- CRUD (추가, 수정, 삭제, 목록)
-- [ { id, title, completed } ]
-
 # 1. 목표
 
 - React + TypeScript 로 Todo 앱 제작
