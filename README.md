@@ -15,8 +15,6 @@
 - react-router-dom
 - Context API (Theme, 로그인 등)
 
-※ CRA 로 먼저 코딩 후 추후 Vite 로 수정 ※
-
 # 3. 프로젝트 구조 (아직 만드는 중, 추후 변동될 수 있음)
 
 ```text
