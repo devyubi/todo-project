@@ -3,7 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@nivo/pie": "^0.99.0",
+=======
+    "@nivo/core": "^0.99.0",
+    "@nivo/pie": "^0.99.0",
+    "@supabase/supabase-js": "^2.56.1",
+>>>>>>> 24510e5cfce976c133e12deaecb3ca3a75ba78b1
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
     "dayjs": "^1.11.13",
@@ -22,7 +28,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
+<<<<<<< HEAD
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix"
+=======
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "generate-types": "npx supabase gen types typescript --project-id rqckhcqnpwvkjofyetzm --schema public > types_db.ts"
+>>>>>>> 24510e5cfce976c133e12deaecb3ca3a75ba78b1
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +54,10 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
+=======
+    "@tailwindcss/postcss": "^4.1.12",
+>>>>>>> 24510e5cfce976c133e12deaecb3ca3a75ba78b1
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
@@ -56,7 +71,11 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.20",
     "postcss": "^8.4.38",
+<<<<<<< HEAD
     "prettier": "^3.6.2",
+=======
+    "prettier": "^3.3.3",
+>>>>>>> 24510e5cfce976c133e12deaecb3ca3a75ba78b1
     "prettier-plugin-tailwindcss": "^0.6.8",
     "tailwindcss": "^3.4.10"
   }
