@@ -15,11 +15,6 @@
 - react-router-dom
 - Context API (Theme, 로그인 등)
 
-<<<<<<< HEAD
-=======
-※ CRA 로 먼저 코딩 후 추후 Vite 로 수정 ※
-
->>>>>>> 24510e5cfce976c133e12deaecb3ca3a75ba78b1
 # 3. 프로젝트 구조 (아직 만드는 중, 추후 변동될 수 있음)
 
 ```text
@@ -69,24 +64,12 @@
 # 4. 주요 기능
 
 1. **Header**
-<<<<<<< HEAD
    - 테마
 
 2. **메인 페이지**
    - Todo 화면 출력
 
 3. **Todo 페이지**
-=======
-
-   - 테마
-
-2. **메인 페이지**
-
-   - Todo 화면 출력
-
-3. **Todo 페이지**
-
->>>>>>> 24510e5cfce976c133e12deaecb3ca3a75ba78b1
    - TodoWrite: 글 작성
    - TodoList: 작성한 목록 표시
    - TodoItem: 아이템 단위 관리 (완료/수정/삭제)
@@ -102,6 +85,7 @@
 - Frame Motion
 - Dayjs
 - Nivo Chart (Pie 차트 사용)
+- lucide-react (스플레시 스크린 아이콘)
 
 # 추가 기능 구현
 

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Users } from 'lucide-react';
 
 const SplashScreen: React.FC = () => {
   const [visible, setVisible] = useState(true);
@@ -13,17 +15,43 @@ const SplashScreen: React.FC = () => {
   if (!visible) return null;
 
   return (
-    <div className="flex items-center justify-center h-screen bg-[#452c08] text-white">
-      <div className="flex flex-col items-center animate-fadeIn">
-        <h1 className="text-5xl font-bold tracking-widest">Todo</h1>
-        <p className="mt-4 text-lg opacity-80">할 일 서비스 앱</p>
-        {/* 점 3개 */}
-        <div className="flex space-x-1 mt-6">
-          <span className="w-2 h-2 bg-white rounded-full animate-bounce"></span>
-          <span className="w-2 h-2 bg-white rounded-full animate-bounce delay-200"></span>
-          <span className="w-2 h-2 bg-white rounded-full animate-bounce delay-400"></span>
-        </div>
-      </div>
+    <div className="flex items-center justify-center h-screen bg-[#553f0b]">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1 }}
+        className="text-center"
+      >
+        {/* 아이콘 */}
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="flex justify-center"
+        >
+          <Users className="w-20 h-20 text-white" />
+        </motion.div>
+
+        {/* 로고 */}
+        <h1 className="mt-6 text-5xl font-bold text-white tracking-widest">
+          no:
+          <span className="bg-gradient-to-r from-white to-[#ffe552] bg-clip-text text-transparent">
+            ri
+          </span>
+        </h1>
+
+        {/* 서브 문구 */}
+        <p className="mt-4 text-lg text-white opacity-80">
+          새로운 출발, 새로운 시작, Todo 앱서비스와 함께
+        </p>
+
+        {/* 로딩 애니메이션 */}
+        <motion.div
+          className="mt-8 w-12 h-12 border-4 border-white border-t-transparent rounded-full mx-auto"
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
+        />
+      </motion.div>
     </div>
   );
 };
