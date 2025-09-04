@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Users } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 
 const SplashScreen: React.FC = () => {
   const [visible, setVisible] = useState(true);
@@ -15,7 +15,7 @@ const SplashScreen: React.FC = () => {
   if (!visible) return null;
 
   return (
-    <div className="flex items-center justify-center h-screen bg-[#553f0b]">
+    <div className="flex items-center justify-center h-screen bg-[#89725f]">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -35,7 +35,7 @@ const SplashScreen: React.FC = () => {
         {/* 로고 */}
         <h1 className="mt-6 text-5xl font-bold text-white tracking-widest">
           no:
-          <span className="bg-gradient-to-r from-white to-[#ffe552] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-white to-[#A1866F] bg-clip-text text-transparent">
             ri
           </span>
         </h1>
