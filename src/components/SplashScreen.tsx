@@ -34,9 +34,9 @@ const SplashScreen: React.FC = () => {
 
         {/* 로고 */}
         <h1 className="mt-6 text-5xl font-bold text-white tracking-widest">
-          no:
+          Ddo
           <span className="bg-gradient-to-r from-white to-[#A1866F] bg-clip-text text-transparent">
-            ri
+            do
           </span>
         </h1>
 
