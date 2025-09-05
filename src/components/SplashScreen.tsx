@@ -42,7 +42,7 @@ const SplashScreen: React.FC = () => {
 
         {/* 서브 문구 */}
         <p className="mt-4 text-lg text-white opacity-80">
-          새로운 출발, 새로운 시작, Todo 앱서비스와 함께
+          새로운 출발, 새로운 시작, Ddodo 앱서비스와 함께
         </p>
 
         {/* 로딩 애니메이션 */}
